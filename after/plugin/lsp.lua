@@ -7,20 +7,20 @@ lsp_zero.on_attach(function(client, bufnr)
 	lsp_zero.default_keymaps({ buffer = bufnr })
 	lsp_zero.buffer_autoformat()
 
-	-- code lens
-	if client.resolved_capabilities.code_lens then
-		local codelens = vim.api.nvim_create_augroup(
-			'LSPCodeLens',
-			{ clear = true }
-		)
-		vim.api.nvim_create_autocmd({ 'BufEnter', 'InsertLeave', 'CursorHold' }, {
-			group = codelens,
-			callback = function()
-				vim.lsp.codelens.refresh()
-			end,
-			buffer = bufnr,
-		})
-	end
+	-- -- code lens
+	-- if client.resolved_capabilities.code_lens then
+	-- 	local codelens = vim.api.nvim_create_augroup(
+	-- 		'LSPCodeLens',
+	-- 		{ clear = true }
+	-- 	)
+	-- 	vim.api.nvim_create_autocmd({ 'BufEnter', 'InsertLeave', 'CursorHold' }, {
+	-- 		group = codelens,
+	-- 		callback = function()
+	-- 			vim.lsp.codelens.refresh()
+	-- 		end,
+	-- 		buffer = bufnr,
+	-- 	})
+	-- end
 end)
 
 lsp_zero.set_sign_icons({
@@ -32,4 +32,10 @@ lsp_zero.set_sign_icons({
 
 lspconfig.lua_ls.setup({})
 lspconfig.pyright.setup({})
-lspconfig.ocamllsp.setup({})
+lspconfig.ocamllsp.setup({
+	capabilities =  capabilities,
+	on_attach = on_attach,
+	settings = {
+		codelens = {enable = true},
+	},
+})

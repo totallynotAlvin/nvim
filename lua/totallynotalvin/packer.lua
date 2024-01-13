@@ -36,6 +36,12 @@ return require('packer').startup(function(use)
 		}
 	}
 	use {
+		"saadparwaiz1/cmp_luasnip"
+	}
+	use {
+		"rafamadriz/friendly-snippets"
+	}
+	use {
 		'numToStr/Comment.nvim',
 		config = function()
 			require('Comment').setup()
@@ -59,4 +65,8 @@ return require('packer').startup(function(use)
 	use {
 		'ggandor/leap.nvim'
 	}
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = function() vim.fn["mkdp#util#install"]() end,
+	})
 end)

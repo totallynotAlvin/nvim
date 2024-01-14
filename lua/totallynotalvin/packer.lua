@@ -66,7 +66,12 @@ return require('packer').startup(function(use)
 		'ggandor/leap.nvim'
 	}
 	use({
-		"iamcco/markdown-preview.nvim",
-		run = function() vim.fn["mkdp#util#install"]() end,
+		"kylechui/nvim-surround",
+		tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+		config = function()
+			require("nvim-surround").setup({
+				-- Configuration here, or leave empty to use defaults
+			})
+		end
 	})
 end)

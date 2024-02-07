@@ -74,4 +74,9 @@ return require('packer').startup(function(use)
 			})
 		end
 	})
+	use {
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+}
+	
 end)

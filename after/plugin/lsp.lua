@@ -28,6 +28,16 @@ lsp_zero.on_attach(function(client, bufnr)
 	-- end
 end)
 
+lsp_zero.format_on_save({
+	format_opts = {
+		async = false,
+		timeout_ms = 1000,
+	},
+	servers = {
+		['ruff_lsp'] = { "python" }
+	}
+})
+
 
 lsp_zero.set_sign_icons({
 	error = '✘',
@@ -36,7 +46,7 @@ lsp_zero.set_sign_icons({
 	info = '»'
 })
 
-lsp_zero.setup_servers({ 'lua_ls', 'pyright', 'ruff_lsp', 'tsserver', })
+lsp_zero.setup_servers({ 'lua_ls', 'pyright', 'tsserver', })
 
 require("luasnip.loaders.from_vscode").lazy_load()
 
@@ -72,7 +82,6 @@ lspconfig.gopls.setup({
 lspconfig.ocamllsp.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
-	settings = {
-		codelens = { enable = true },
-	},
 })
+
+lspconfig.ruff_lsp.setup({})

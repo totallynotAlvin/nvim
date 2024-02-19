@@ -2,7 +2,7 @@ local chadtree_settings = {
 	theme = {
 		icon_glyph_set = "ascii",
 		icon_colour_set = "github",
-		text_colour_set = "solarized_dark",
+		text_colour_set = "nord",
 	}
 }
 vim.api.nvim_set_var("chadtree_settings", chadtree_settings)
